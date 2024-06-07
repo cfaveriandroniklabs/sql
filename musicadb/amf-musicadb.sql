@@ -12,7 +12,7 @@ create table bandas (
 	banda_id serial4 not null,
 	nome varchar(255) not null,
 	ano_criacao int2 not null,
-	genero varchar(255),
+	genero varchar(255) default 'Nenhum',
 	primary key (banda_id)
 );
 
@@ -59,30 +59,30 @@ insert into bandas (banda_id, nome, ano_criacao, genero) values (3,'Iron Maiden'
 insert into bandas (banda_id, nome, ano_criacao, genero) values (4,'Motorhead',1975,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (5,'Exodus',1979,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (6,'Venom',1979,'Heavy Metal');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (9,'Anthrax',1981,'Heavy Metal');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (20,'Barão Vermelho',1981,'Rock Nacional');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (17,'Ira',1981,'Rock Nacional');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (7,'Metallica',1981,'Heavy Metal');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (10,'Pantera',1981,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (8,'Slayer',1981,'Heavy Metal');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (9,'Anthrax',1981,'Heavy Metal');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (10,'Pantera',1981,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (11,'Sodom',1981,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (12,'Dio',1982,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (13,'Kreator',1982,'Heavy Metal');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (19,'Legião Urbana',1982,'Rock Nacional');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (18,'Titãs',1982,'Rock Nacional');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (21,'Biquini Cavadão',1983,'Rock Nacional');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (14,'Megadeth',1983,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (15,'Testament',1983,'Heavy Metal');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (16,'Sepultura',1984,'Heavy Metal');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (17,'Ira',1981,'Rock Nacional');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (18,'Titãs',1982,'Rock Nacional');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (19,'Legião Urbana',1982,'Rock Nacional');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (20,'Barão Vermelho',1981,'Rock Nacional');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (21,'Biquini Cavadão',1983,'Rock Nacional');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (22,'Os Cascavelletes',1987,'Rock Gaúcho');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (23,'Engenheiros do Hawaii',1985,'Rock Gaúcho');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (24,'Nenhum de Nós',1986,'Rock Gaúcho');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (27,'Graforréia Xilarmônica',1987,'Rock Gaúcho');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (22,'Os Cascavelletes',1987,'Rock Gaúcho');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (30,'Rosa Tatooada',1988,'Rock Gaúcho');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (25,'Tequila Baby',1994,'Rock Gaúcho');
-insert into bandas (banda_id, nome, ano_criacao, genero) values (28,'Bidê ou Balde',1998,'Rock Gaúcho');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (26,'Cachorro Grande',1999,'Rock Gaúcho');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (27,'Graforréia Xilarmônica',1987,'Rock Gaúcho');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (28,'Bidê ou Balde',1998,'Rock Gaúcho');
 insert into bandas (banda_id, nome, ano_criacao, genero) values (29,'Vera Loca',2002,'Rock Gaúcho');
+insert into bandas (banda_id, nome, ano_criacao, genero) values (30,'Rosa Tatooada',1988,'Rock Gaúcho');
 
 -- insere dados na tabela albuns
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (1,'Black Sabbath',1970,1);
@@ -147,8 +147,8 @@ insert into albuns (album_id, nome, ano_lancamento, banda_id) values (59,'Vera L
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (60,'Vera Loca II',2006,29);
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (61,'Rosa Tattooada',1990,30);
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (62,'Carburador',1996,30);
-
-select * from albuns;
+-- 
+insert into albuns values (63,'Lapadas do Povo',1997,31);
 
 -- insere musicas nos álbuns
 
@@ -409,57 +409,3 @@ insert into playlists_musicas (playlist_id, musica_id) values (4,117);
 insert into playlists_musicas (playlist_id, musica_id) values (4,118);
 insert into playlists_musicas (playlist_id, musica_id) values (4,119);
 insert into playlists_musicas (playlist_id, musica_id) values (4,120);
-
--- Algumas consultas
-
--- Heavy Metal anos 80
-select 
-	b.banda_id, b.nome as Banda, b.genero, a.album_id, a.nome as Album, a.ano_lancamento, m.musica_id, m.nome 
-from 
-	musicas m 
-inner join 
-	albuns a on a.album_id = m.album_id
-inner join 
-	bandas b on a.banda_id = b.banda_id 
-where b.genero = 'Heavy Metal' and a.ano_lancamento < 1990;
-
--- Heavy Metal moderno
-select 
-	b.banda_id, b.nome as Banda, b.genero, a.album_id, a.nome as Album, a.ano_lancamento, m.musica_id, m.nome 
-from 
-	musicas m 
-inner join 
-	albuns a on a.album_id = m.album_id
-inner join 
-	bandas b on a.banda_id = b.banda_id 
-where b.genero = 'Heavy Metal' and a.ano_lancamento >= 1990;
-
--- Rock Nacional
-select 
-	b.banda_id, b.nome as Banda, b.genero, a.album_id, a.nome as Album, a.ano_lancamento, m.musica_id, m.nome 
-from 
-	musicas m 
-inner join 
-	albuns a on a.album_id = m.album_id
-inner join 
-	bandas b on a.banda_id = b.banda_id 
-where b.genero = 'Rock Nacional'
-
--- Rock Gaúcho
-select 
-	b.banda_id, b.nome as Banda, b.genero, a.album_id, a.nome as Album, a.ano_lancamento, m.musica_id, m.nome 
-from 
-	musicas m 
-inner join 
-	albuns a on a.album_id = m.album_id
-inner join 
-	bandas b on a.banda_id = b.banda_id 
-where b.genero = 'Rock Gaúcho'
-
--- consulta playlists
-select p.nome, b.nome as banda, a.nome as album, m.nome as musica from playlists p 
-inner join playlists_musicas pm on pm.playlist_id = p.playlist_id 
-inner join musicas m on m.musica_id = pm.musica_id
-inner join albuns a on a.album_id = m.album_id 
-inner join bandas b on b.banda_id = a.banda_id 
-order by p.nome, b.nome, a.nome, m.nome;
