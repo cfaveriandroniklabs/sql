@@ -1,12 +1,6 @@
 -- cria o banco de dados mymusicdb
 create database musicadb;
 
-drop table if exists bandas cascade;
-drop table if exists albuns cascade;
-drop table if exists musicas cascade; 
-drop table if exists playlists cascade; 
-drop table if exists playlists_musicas cascade; 
-
 -- cria tabela
 create table bandas (
 	banda_id serial4 not null,
@@ -147,8 +141,6 @@ insert into albuns (album_id, nome, ano_lancamento, banda_id) values (59,'Vera L
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (60,'Vera Loca II',2006,29);
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (61,'Rosa Tattooada',1990,30);
 insert into albuns (album_id, nome, ano_lancamento, banda_id) values (62,'Carburador',1996,30);
--- 
-insert into albuns values (63,'Lapadas do Povo',1997,31);
 
 -- insere musicas nos álbuns
 
