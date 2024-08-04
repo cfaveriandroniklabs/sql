@@ -1,0 +1,72 @@
+Sistema de field services
+-------------------------
+
+O Field Service, ou serviço em campo, é uma área de negócio que se concentra em fornecer suporte técnico, manutenção, reparos e outros serviços no local onde os produtos ou sistemas estão instalados ou são usados.
+O Field Service é especialmente relevante para empresas que oferecem produtos complexos que exigem assistência técnica especializada e rápida, seja para instalação, solução de problemas ou atualizações.
+Existe um ampla variedade de serviços que são prestados por empresas.
+Por exemplo, a instalação ou reparo de uma conexão com a internet é realizada por um provedor na empresa ou na casa de um contratante.
+Da mesma forma, reparo de eletrodomésticos como um TV ou uma geladeira pode ser realizada por meio de um serviço de campo.
+Controlar a agenda dos prestadores de serviço baseado nas suas habilidades não é tarefa trivial quando feita de forma manual.
+De forma geral, a jornada de um atendimento de campo de forma manual funciona da seguinte forma: 
+O cliente entra em contato (via telefone, whatsApp ou website da empresa) e solicita uma visita técnica.
+Ele indica o problema que deseja resolver. 
+Um atendente que gerencia agenda dos técnicos recebe a solicitação.
+Ele verifica qual técnico pode atender aquela solicitação, verificando as competências e habilidades desses técnicos.
+Ele escolhe uma data disponível para informar ao cliente. 
+O cliente concordando com a data, confirma a visita. 
+Um dia antes da data da visita, o atendente entra em contato com o cliente para confirmar se está tudo OK com a visita do dia seguinte.
+No dia da visita, o técnico se desloca até o local do atendimento e realiza o serviço.
+Ao final, ele escreve um relatório relatando os detalhes do serviço realizado. 
+O cliente então assina o relatório.
+O técnico envia o relatório para a central da prestadora que irá contabilizar o serviço e emitir uma cobrança ao cliente (se for o caso)
+O cliente recebe via whatsApp uma pesquisa de satisfação para indicar o quão satisfatório foi o serviço prestado. 
+
+Um sistema informatizado será implantado para agilizar o serviço de campo e aumentar a satisfação do cliente.
+
+Os seguintes cadastros precisam ser criados:
+
+1.Cadastro de técnicos: contém dados dos técnicos de campo
+(Código, nome completo, sexo (M/F), status (Ativo, Desabilitado, Inativo), raça (preto, pardo, branco, indígena e amarelo),cargo, vínculo empregatício (CLT, PJ, Cooperativa) grau de instrução, telefone celular pessoal, telefone celular empresa, email, foto, tipo sanguíneo, data de nascimento, data admissão, CPF, RG, CNH, endereço residencial, dias e horários disponíveis, habilidades e competências)
+
+2. Cadastro de clientes Pessoa Física: contém dados de pessoa física (Código, nome completo, sexo (M/F), status (Ativo, Desabilitado, Inativo), grau de instrução, foto, data de nascimento, CPF, endereço residencial, telefone celular, email)
+
+3. Cadastro de clientes Pessoa Jurídica:contém dados de pessoas jurídicas (Código, CNPJ, logo, Nome fantasia, Razão Social, CNAE, Inscrição Estadual, Inscrição Municipal, Endereço, e-mail administrativo, e-mail financeiro, juros mensais, multa padrão)
+
+4. Agenda: contém dados de agendamento de atendimentos de campo 
+(data, hora inicial, hora final, endereço de atendimento, endereço de partida do técnico, técnico1, técnico2, cliente, problema, relato de solução, status [livre, agendado, em deslocamento, atendendo, finalizado, cancelado], código do atendimento padrão)
+
+5. Atendimento: contém dados de atendimentos padrão. Esse atendimento deve ser associado a um agendamento (código, descrição, competências e habilidades necessárias, materiais necessários, checklist de atendimento)
+
+Consultas a serem feitas:
+
+a) Quais clientes solicitaram mais atendimento no mês/ano mm/aaaa?
+b) Quais tipos de atendimento mais foram realizados no mês/ano mm/aaaa?
+c) Qual região (raiz do CEP) houve mais atendimentos no mês/ano mm/aaaa?
+d) Quais habilidades e competências forma mais requisitadas no mês/ano mm/aaaa??
+e) Quais materiais foram mais utilizadas no mês/ano mm/aaaa??
+f) Qual proporção de pessoas físicas e jurídicas que solicitaram serviços de campo no mês/ano mm/aaaa??
+g) Quantos quilometros foram percorridos no mês/ano mm/aaaa??
+
+Emitir 
+a)Listagem dos técnicos (cpf, nome, competências e habilidades, mês, ano, quilómetros percorridos) ordenado da menor para maior quilometragem
+b)Listagem dos técnicos (cpf, nome, data de nascimento, data de admissão) ordenado por data de admissão (maior para menor)
+c)Listagem dos clientes pessoa física (cpf, nome, endereço, etc.) ordenado pela raiz do CEP (ex.: 97500)
+  Aplique diversos filtros (por raça, por sexo, por tipo sanguíneo, etc.)
+d)Listagem dos clientes pessoa jurídica (cpf, razão social, endereço, etc.) ordenado pela raiz do CEP (ex.: 97500) 
+  Aplique diversos filtros (por CNAE, por juros mensair, etc.)
+e)Listagem da agenda com dias vagos do mês/ano mm/aaaa.
+f)Listagem da agenda com dias agendados mas não atendidos do mês/ano mm/aaaa. 
+g)Listagem da agenda com técnicos em deslocamento.
+g)Listagem da agenda com serviços encerrados no mês/ano mm/aaaa.
+
+Estenda o modelo de dados para realizar a pesquisa de satisfação e associá-la ao atendimento. 
+Realize pesquisas sobre os dados da pesquisa de satisfação.
+
+
+
+
+
+
+
+
+ 
